@@ -1,5 +1,7 @@
 # AmberScript Perfect Transcription API
-You will receive an apiKey from us, which you will have to provide as query parameter `apiKey` for all endpoints below. After uploading the file using endpoint 1), our transcribers will get to work and create a perfect transcription within 5 business days. You can query the `jobStatus` of the job using endpoint 2). When `jobStatus` changed to `PERFECT_DONE` the job is finished and you can download the file in json or xml format.
+You will receive an apiKey from us, which you will have to provide as query parameter `apiKey` for all endpoints below. After uploading the file using endpoint 1), our transcribers will get to work and create a perfect transcription within 5 business days. You can query the `status` of the job using endpoint 2). When `status` changed to `DONE` the job is finished and you can download the file in json or xml format.
+
+Possible `status` values: "OPEN", "ERROR", "DONE".
 
 ## 1) Uploading a file `POST /jobs/upload-media`
 
@@ -11,20 +13,14 @@ Supported parameters:
 Returns:
 ```json
 {
-  "jobStatus": {
+  "jobStatus": {    
     "jobId": "{{JOB_ID}}",
-    "recordId": "{{RECORD_ID}}",
     "created": 1553871202831,
-    "updated": null,
     "language": "nl",
-    "submitted": false,
-    "submittedDate": null,
-    "userRecordStatus": "BUSY",
-    "jobStatus": "PERFECT_OPEN",
+    "status": "OPEN",
     "jobType": "perfect",
     "nrAudioSeconds": 0,
     "transcriptionType": "transcription",
-    "accessKey": null,
     "filename": "FILE_NAME"
   }
 }
@@ -45,18 +41,12 @@ Returns:
 {
   "jobStatus": {
     "jobId": "{{JOB_ID}}",
-    "recordId": "{{RECORD_ID}}",
     "created": 1553871202831,
-    "updated": null,
     "language": "nl",
-    "submitted": false,
-    "submittedDate": null,
-    "userRecordStatus": "BUSY",
-    "jobStatus": "PERFECT_OPEN",
+    "status": "OPEN",
     "jobType": "perfect",
     "nrAudioSeconds": 0,
     "transcriptionType": "transcription",
-    "accessKey": null,
     "filename": "FILE_NAME"
   }
 }
