@@ -1,14 +1,14 @@
-# AmberScript Perfect Transcription API
-You will receive an apiKey from us, which you will have to provide as query parameter `apiKey` for all endpoints below. After uploading the file using endpoint 1), our transcribers will get to work and create a perfect transcription within 5 business days. You can query the `status` of the job using endpoint 2). When `status` changed to `DONE` the job is finished and you can download the file in json or xml format.
+# AmberScript Transcription API
+You will receive an apiKey from us, which you will have to provide as query parameter `apiKey` for all endpoints below. After uploading the file using endpoint 1), our transcribers or our automatic speech recognition servers (depending on the jobType) will get to work and create a transcription. `direct` transcriptions are usually ready within 1h, `perfect` ones within 5 business days. You can query the `status` of the job using endpoint 2). When `status` changed to `DONE` the job is finished and you can download the file in json or xml format using endpoint 3).
 
 Possible `status` values: "OPEN", "ERROR", "DONE".
 
 ## 1) Uploading a file `POST /jobs/upload-media`
 
 Supported parameters:
-- `language`: [`nl`, `en`, `de`, `fr`] // any two letter language code
+- `language`: [`nl`, `en`, `de`, `fr`]
 - `transcriptionType`: [`transcription`]
-- `jobType`: [`perfect`]
+- `jobType`: [`perfect`, `direct`]
 
 Returns:
 ```json
@@ -18,7 +18,7 @@ Returns:
     "created": 1553871202831,
     "language": "nl",
     "status": "OPEN",
-    "jobType": "perfect",
+    "jobType": "direct",
     "nrAudioSeconds": 0,
     "transcriptionType": "transcription",
     "filename": "FILE_NAME"
