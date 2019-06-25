@@ -9,6 +9,7 @@ Supported parameters:
 - `language`: [`nl`, `en`, `de`, `fr`]
 - `transcriptionType`: [`transcription`]
 - `jobType`: [`perfect`, `direct`]
+- `numberOfSpeakers`: [1, 2, 3, 4, 5]
 
 Returns:
 ```json
