@@ -6,7 +6,7 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
 ## 1) Uploading a file `POST /jobs/upload-media`
 
 Supported parameters:
-- `language`: [`nl`, `en`, `de`, `fr`]
+- `language`: [`nl`, `en`, `de`, `fr`, `da`, `sv`, `fi`, `no`, `es`] 
 - `transcriptionType`: [`transcription`]
 - `jobType`: [`perfect`, `direct`]
 - `numberOfSpeakers`: [1, 2, 3, 4, 5]
