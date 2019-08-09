@@ -29,7 +29,33 @@ Returns:
 
 ### CURL
 ```shell
-curl --request POST --url 'https://qs.amberscript.com/jobs/upload-media?transcriptionType=transcription&jobType=perfect&language=nl&apiKey={{YOUR_API_KEY}}' --form file=@./my-file.mp3
+curl --request POST --url 'https://qs.amberscript.com/jobs/upload-media?transcriptionType=transcription&jobType=direct&language=nl&apiKey={{YOUR_API_KEY}}' --form file=@./my-file.mp3
+```
+
+### NodeJs
+```javascript
+const request = require('request');
+const fs = require('fs');
+
+let options = {
+  method: 'POST',
+  url: 'https://qs.amberscript.com/jobs/upload-media',
+  qs: {
+    apiKey: 'YOUR_API_KEY',
+    transcriptionType: 'transcription',
+    jobType: 'direct',
+    language: 'nl',
+    numberOfSpeakers: '2'
+  },
+  headers: {'content-type': 'multipart/form-data'},
+  formData: {file: fs.createReadStream("./path/to/my_file.mp3")}
+};
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
 ## 2) Getting the status of a transcription `GET /jobs/status`
