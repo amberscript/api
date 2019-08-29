@@ -9,7 +9,7 @@ Supported parameters:
 - `language`: [`nl`, `en`, `de`, `fr`, `da`, `sv`, `fi`, `no`, `es`] 
 - `transcriptionType`: [`transcription`]
 - `jobType`: [`perfect`, `direct`]
-- `numberOfSpeakers`: [1, 2, 3, 4, 5]
+- `numberOfSpeakers`: [`1`, `2`, `3`, `4`, `5`]
 
 File requirements:
 - max 4GB
