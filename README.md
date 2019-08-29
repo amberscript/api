@@ -11,6 +11,11 @@ Supported parameters:
 - `jobType`: [`perfect`, `direct`]
 - `numberOfSpeakers`: [1, 2, 3, 4, 5]
 
+File requirements:
+- max 4GB
+- audio or video file
+- supported formats: wav, mp3, m4a, aac, wma, mov, m4v, mp4
+
 Returns:
 ```json
 {
