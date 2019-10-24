@@ -132,7 +132,7 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/sta
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
 - `format`: [`xml`, `json`, `srt`]
-- `maxCharsPerSubtitle`: (optional) any integer. default: 50 (srt only)
+- `maxCharsPerSubtitle`: (optional) any integer. Determines the maximum number of characters per subtitle frame. A subtitle frame has two lines. Default: 50 (srt only)
 - `subtitleDurationMax`: (optional) any integer. Determines the max duration (in milliseconds) a single subtitle frame should be shown. Default: 4500 (srt only)
 
 Returns (xml):
