@@ -7,7 +7,7 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
 
 Supported parameters:
 - `language`: [`nl`, `en`, `de`, `fr`, `da`, `sv`, `fi`, `no`, `es`] 
-- `transcriptionType`: [`transcription`]
+- `transcriptionType`: [`transcription`, `translation`]
 - `jobType`: [`perfect`, `direct`]
 - `numberOfSpeakers`: [`1`, `2`, `3`, `4`, `5`]
 
