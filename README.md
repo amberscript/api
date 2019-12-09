@@ -65,6 +65,21 @@ request(options, function (error, response, body) {
 });
 ```
 
+### Python
+```python
+import requests
+
+url = 'https://qs.amberscript.com/jobs/upload-media'
+filepath = '/Users/userA/Downloads/my-file.mp3'
+querystring = {"jobType":"direct","language":"nl","transcriptionType":"transcription","apiKey":"YOUR_API_KEY"}
+files = {'file': open(filepath, 'rb')}
+
+response = requests.post(url, files=files, verify=False, params=querystring)
+
+print(response.status_code)
+print(response.text)
+```
+
 ## 2) Getting the status of a transcription `GET /jobs/status`
 
 Supported parameters:
