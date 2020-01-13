@@ -14,7 +14,7 @@ Supported parameters:
 File requirements:
 - max 4GB
 - audio or video file
-- supported formats: wav, mp3, m4a, aac, wma, mov, m4v, mp4
+- supported formats: wav, mp3, m4a, aac, wma, mov, m4v, mp4, opus, flac
 
 _If you need support for a different file format, please get in touch with us: info (at) amberscript (dot) com_
 
