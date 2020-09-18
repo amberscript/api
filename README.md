@@ -311,5 +311,8 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/exp
 - If the attempt is unsuccessful we retry the update again.
 - The maximum number of attempts is **10**.
 
+#### Storing the `jobId`
+You have to store the `jobId` if you don't use any callbacks.
+
 ## Support
 If you need any technical assistance, feel free to contact `info (at) amberscript (dot) com`
