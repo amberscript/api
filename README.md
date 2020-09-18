@@ -143,6 +143,8 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/sta
 ```
 
 ## 3) Downloading a finished file `GET /jobs/export`
+|:warning:|DEPRECATED|
+|---------|:---------|
 
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
