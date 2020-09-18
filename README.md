@@ -3,7 +3,7 @@ You will receive an apiKey from us, which you will have to provide as query para
 
 Possible `status` values: "OPEN", "ERROR", "DONE".
 
-## 1) Uploading a file `POST /jobs/upload-media`
+## Uploading a file `POST /jobs/upload-media`
 
 Supported parameters:
 - `language`: [`nl`, `en`, `de`, `fr`, `da`, `sv`, `fi`, `no`, `es`] 
@@ -80,7 +80,7 @@ print(response.status_code)
 print(response.text)
 ```
 
-## 2) Getting the status of a transcription `GET /jobs/status`
+## Getting the status of a transcription `GET /jobs/status`
 
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
@@ -142,7 +142,7 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/sta
   .asString();
 ```
 
-## 3) Downloading a finished file `GET /jobs/export`
+## Downloading a finished file `GET /jobs/export`
 |:warning:|DEPRECATED|
 |---------|:---------|
 
