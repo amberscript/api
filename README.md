@@ -300,5 +300,16 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/exp
   .asString();
 ```
 
+## Additional Information
+
+### Callbacks
+
+#### What happens if a callback fails?
+
+- We track the callback in our history log.
+- After **1 hour**, we make a new attempt to update the client.
+- If the attempt is unsuccessful we retry the update again.
+- The maximum number of attempts is **10**.
+
 ## Support
 If you need any technical assistance, feel free to contact `info (at) amberscript (dot) com`
