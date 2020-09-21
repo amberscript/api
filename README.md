@@ -9,6 +9,7 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
 - [Exporting Files](#exporting-files)
   - [Exporting a finished file (DEPRECATED)](#exporting-a-finished-file)
   - [Export to STL](#export-to-stl)
+  - [Export to SRT](#export-to-srt)
 - [Additional Information](#additional-information)
 - [Support](#support)
 
@@ -367,6 +368,74 @@ print(response.text)
 #### Java
 ```java
 HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/export-stl?jobId=JOB_ID&apiKey=YOUR_API_KEY")
+  .asString();
+```
+
+### Export to SRT
+`GET /jobs/export-srt`
+
+Supported parameters:
+- `jobId`: [`YOUR_JOB_ID`]
+- `maxCharsPerRow`: (optional) any integer. Sets the maximum number of characters per row.
+- `maxNumberOfRows`: (optional) any integer. Sets the maximum number of rows for each subtitle.
+- `maxScreenTimePerRowSeconds`: (optional) any float. Sets the maximum number seconds given for each row of subtitles.
+
+Returns (srt):
+```
+1
+00:00:00,000 --> 00:00:02,190
+Goedemiddag, welkom.
+
+2
+00:00:02,289 --> 00:00:05,369
+Goedemiddag, dank u wel.
+
+3
+00:00:05,469 --> 00:00:08,289
+Hoe gaat het met je vandaag
+
+4
+00:00:09,159 --> 00:00:12,689
+Goed, dank je!
+```
+
+#### CURL
+```shell
+curl --request GET --url 'https://qs.amberscript.com/jobs/export-srt?jobId=JOB_ID&apiKey=YOUR_API_KEY'
+ ```
+
+ #### NodeJS
+ ```javascript
+ var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://qs.amberscript.com/jobs/export-srt',
+  qs: { jobId: 'JOB_ID', apiKey: 'YOUR_API_KEY' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+#### Python
+```python
+import requests
+
+url = "https://qs.amberscript.com/jobs/export-srt"
+
+querystring = {"jobId":"JOB_ID" "apiKey":"YOUR_API_KEY"}
+
+payload = ""
+response = requests.request("GET", url, data=payload, params=querystring)
+
+print(response.text)
+```
+
+#### Java
+```java
+HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/export-srt?jobId=JOB_ID&apiKey=YOUR_API_KEY")
   .asString();
 ```
 ---
