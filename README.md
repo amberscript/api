@@ -12,6 +12,7 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
   - [Export to SRT](#export-to-srt)
   - [Export to VTT](#export-to-vtt)
   - [Export to TXT](#export-to-txt)
+  - [Export to JSON](#export-to-json)
 - [Additional Information](#additional-information)
 - [Support](#support)
 
@@ -573,6 +574,138 @@ print(response.text)
 #### Java
 ```java
 HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/export-txt?jobId=JOB_ID&apiKey=YOUR_API_KEY")
+  .asString();
+```
+
+### Export to JSON
+`GET /jobs/export-json`
+
+Supported parameters:
+- `jobId`: [`YOUR_JOB_ID`]
+
+Returns (json):
+```json
+{
+  "id": "5c9e45057103e464a4c6f477",
+  "recordId": "RECORD_ID",
+  "filename": "FILENAMEW",
+  "startTimeOffset": 0.0,
+  "speakers": [
+    {
+      "spkid": "spk1",
+      "name": "Speaker 1"
+    },
+    {
+      "spkid": "spk2",
+      "name": "Speaker 2"
+    },
+    {
+      "spkid": "spk3",
+      "name": "Speaker 3"
+    }
+  ],
+  "segments": [
+    {
+      "speaker": "spk1",
+      "words": [
+        {
+          "text": "Goedemiddag",
+          "start": 2.11,
+          "end": 2.68,
+          "duration": null,
+          "conf": null
+        },
+        {
+          "text": "welkom",
+          "start": 2.68,
+          "end": 3.01,
+          "duration": null,
+          "conf": null
+        },
+        {
+          "text": "bij",
+          "start": 3.01,
+          "end": 3.16,
+          "duration": null,
+          "conf": null
+        },
+        {
+          "text": "het",
+          "start": 3.16,
+          "end": 3.34,
+          "duration": null,
+          "conf": null
+        },
+        {
+          "text": "mondelinge.",
+          "start": 3.37,
+          "end": 3.92,
+          "duration": null,
+          "conf": null
+        }
+      ]
+    },
+    {
+      "speaker": "spk2",
+      "words": [
+        {
+          "text": "Vragen",
+          "start": 4.14,
+          "end": 4.9,
+          "duration": null,
+          "conf": null
+        },
+        {
+          "text": "uur.",
+          "start": 4.98,
+          "end": 5.4,
+          "duration": null,
+          "conf": null
+        }
+      ]
+    }
+  ],
+  "highlights": []
+}
+```
+
+#### CURL
+```shell
+curl --request GET --url 'https://qs.amberscript.com/jobs/export-json?jobId=JOB_ID&apiKey=YOUR_API_KEY'
+ ```
+
+ #### NodeJS
+ ```javascript
+ var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://qs.amberscript.com/jobs/export-json',
+  qs: { jobId: 'JOB_ID', apiKey: 'YOUR_API_KEY' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+#### Python
+```python
+import requests
+
+url = "https://qs.amberscript.com/jobs/export-json"
+
+querystring = {"jobId":"JOB_ID" "apiKey":"YOUR_API_KEY"}
+
+payload = ""
+response = requests.request("GET", url, data=payload, params=querystring)
+
+print(response.text)
+```
+
+#### Java
+```java
+HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/export-json?jobId=JOB_ID&apiKey=YOUR_API_KEY")
   .asString();
 ```
 ---
