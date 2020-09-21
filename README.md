@@ -13,6 +13,7 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
   - [Export to VTT](#export-to-vtt)
   - [Export to TXT](#export-to-txt)
   - [Export to JSON](#export-to-json)
+- [Delete a job](#delete-a-job)
 - [Additional Information](#additional-information)
 - [Support](#support)
 
@@ -706,6 +707,59 @@ print(response.text)
 #### Java
 ```java
 HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/export-json?jobId=JOB_ID&apiKey=YOUR_API_KEY")
+  .asString();
+```
+
+## Delete a job
+`DELETE /jobs/`
+
+Supported parameters:
+- `jobId`: [`YOUR_JOB_ID`]
+
+Returns (json):
+```json
+{
+    "message": "Job deleted"
+}
+```
+
+### CURL
+```shell
+curl --request DELETE --url 'https://qs.amberscript.com/jobs?jobId=JOB_ID&apiKey=YOUR_API_KEY'
+ ```
+
+### NodeJS
+ ```javascript
+ var request = require("request");
+
+var options = { method: 'DELETE',
+  url: 'https://qs.amberscript.com/jobs',
+  qs: { jobId: 'JOB_ID', apiKey: 'YOUR_API_KEY' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+### Python
+```python
+import requests
+
+url = "https://qs.amberscript.com/jobs"
+
+querystring = {"jobId":"JOB_ID" "apiKey":"YOUR_API_KEY"}
+
+payload = ""
+response = requests.request("DELETE", url, data=payload, params=querystring)
+
+print(response.text)
+```
+
+### Java
+```java
+HttpResponse<String> response = Unirest.delete("https://qs.amberscript.com/jobs?jobId=JOB_ID&apiKey=YOUR_API_KEY")
   .asString();
 ```
 ---
