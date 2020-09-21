@@ -6,7 +6,9 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
 ## Table Of Contents
 - [Uploading a file](#uploading-a-file)
 - [Getting the status of a transcription](#getting-the-status-of-a-transcription)
-- [Exporting a finished file (DEPRECATED)](#exporting-a-finished-file)
+- [Exporting Files](#exporting-files)
+  - [Exporting a finished file (DEPRECATED)](#exporting-a-finished-file)
+  - [Export to STL](#export-to-stl)
 - [Additional Information](#additional-information)
 - [Support](#support)
 
@@ -151,7 +153,9 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/sta
   .asString();
 ```
 
-## Exporting a finished file
+## Exporting Files
+
+### Exporting a finished file
 `GET /jobs/export`
 
 |:warning:|DEPRECATED|
@@ -271,7 +275,7 @@ Returns (json):
 }
 ```
 
-### CURL
+#### CURL
 ```shell
 curl --request GET --url 'https://qs.amberscript.com/jobs/export?jobId=JOB_ID&apiKey=YOUR_API_KEY&format=json'
  ```
@@ -291,7 +295,7 @@ request(options, function (error, response, body) {
 });
 ```
 
-### Python
+#### Python
 ```python
 import requests
 
@@ -305,13 +309,13 @@ response = requests.request("GET", url, data=payload, params=querystring)
 print(response.text)
 ```
 
-### Java
+#### Java
 ```java
 HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/export?jobId=JOB_ID&apiKey=YOUR_API_KEY&format=json")
   .asString();
 ```
 
-## Exporting to STL
+### Export to STL
 `GET /jobs/export-stl`
 
 Supported parameters:
@@ -326,12 +330,12 @@ Returns (json):
 }
 ```
 
-### CURL
+#### CURL
 ```shell
 curl --request GET --url 'https://qs.amberscript.com/jobs/export-stl?jobId=JOB_ID&apiKey=YOUR_API_KEY'
  ```
 
- ### NodeJS
+ #### NodeJS
  ```javascript
  var request = require("request");
 
@@ -346,7 +350,7 @@ request(options, function (error, response, body) {
 });
 ```
 
-### Python
+#### Python
 ```python
 import requests
 
@@ -360,7 +364,7 @@ response = requests.request("GET", url, data=payload, params=querystring)
 print(response.text)
 ```
 
-### Java
+#### Java
 ```java
 HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/export-stl?jobId=JOB_ID&apiKey=YOUR_API_KEY")
   .asString();
