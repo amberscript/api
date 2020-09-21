@@ -311,6 +311,61 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/exp
   .asString();
 ```
 
+## Exporting to STL
+`GET /jobs/export-stl`
+
+Supported parameters:
+- `jobId`: [`YOUR_JOB_ID`]
+- `maxNumberOfRows`: (optional) any integer. Sets the maximum number of rows for each subtitle.
+- `maxScreenTimePerRowSeconds`: (optional) any float. Sets the maximum number seconds given for each row of subtitles.
+
+Returns (json):
+```json
+{
+    "downloadUrl": "https://PROD-SERVER/ebu-stl/FILENAME?X-Amz-Algorithm=HASH_ALGORITHM&X-Amz-Date=CURRENT_DATE&X-Amz-SignedHeaders=host&X-Amz-Expires=TIME_TO_EXPIRATION&X-Amz-Credential=AMZ_CREDENTIAL&X-Amz-Signature=AMZ_SIGNATURE"
+}
+```
+
+### CURL
+```shell
+curl --request GET --url 'https://qs.amberscript.com/jobs/export-stl?jobId=JOB_ID&apiKey=YOUR_API_KEY'
+ ```
+
+ ### NodeJS
+ ```javascript
+ var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://qs.amberscript.com/jobs/export-stl',
+  qs: { jobId: 'JOB_ID', apiKey: 'YOUR_API_KEY' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+### Python
+```python
+import requests
+
+url = "https://qs.amberscript.com/jobs/export-stl"
+
+querystring = {"jobId":"JOB_ID" "apiKey":"YOUR_API_KEY"}
+
+payload = ""
+response = requests.request("GET", url, data=payload, params=querystring)
+
+print(response.text)
+```
+
+### Java
+```java
+HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/export-stl?jobId=JOB_ID&apiKey=YOUR_API_KEY")
+  .asString();
+```
+---
 ## Additional Information
 
 ### Callbacks
