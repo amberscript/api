@@ -522,7 +522,7 @@ Supported parameters:
 - `highlightsOnly`: (optional) any boolean value. Defaults to false.
 - `maxCharsPerRow`: (optional) any integer. Sets the maximum number of characters per row.
 
-Returns (vtt):
+Returns (txt):
 ```
 00:00:00
 Speaker 1: Goedemiddag, welkom.
