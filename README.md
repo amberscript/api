@@ -11,6 +11,7 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
   - [Export to STL](#export-to-stl)
   - [Export to SRT](#export-to-srt)
   - [Export to VTT](#export-to-vtt)
+  - [Export to TXT](#export-to-txt)
 - [Additional Information](#additional-information)
 - [Support](#support)
 
@@ -507,6 +508,71 @@ print(response.text)
 #### Java
 ```java
 HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/export-vtt?jobId=JOB_ID&apiKey=YOUR_API_KEY")
+  .asString();
+```
+
+### Export to TXT
+`GET /jobs/export-txt`
+
+Supported parameters:
+- `jobId`: [`YOUR_JOB_ID`]
+- `includeTimestamps`: (optional) any boolean value. Defaults to true.
+- `includeSpeakers`: (optional) any boolean value. Defaults to true.
+- `highlightsOnly`: (optional) any boolean value. Defaults to false.
+- `maxCharsPerRow`: (optional) any integer. Sets the maximum number of characters per row.
+
+Returns (vtt):
+```
+00:00:00
+Speaker 1: Goedemiddag, welkom.
+
+00:00:20
+Speaker 2: Goedemiddag, dank u wel.
+
+00:00:22
+Speaker 1: Hoe gaat het met je vandaag?
+
+00:00:24
+Speaker 2: Goed, dank je!
+```
+
+#### CURL
+```shell
+curl --request GET --url 'https://qs.amberscript.com/jobs/export-txt?jobId=JOB_ID&apiKey=YOUR_API_KEY'
+ ```
+
+ #### NodeJS
+ ```javascript
+ var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://qs.amberscript.com/jobs/export-txt',
+  qs: { jobId: 'JOB_ID', apiKey: 'YOUR_API_KEY' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+#### Python
+```python
+import requests
+
+url = "https://qs.amberscript.com/jobs/export-txt"
+
+querystring = {"jobId":"JOB_ID" "apiKey":"YOUR_API_KEY"}
+
+payload = ""
+response = requests.request("GET", url, data=payload, params=querystring)
+
+print(response.text)
+```
+
+#### Java
+```java
+HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/export-txt?jobId=JOB_ID&apiKey=YOUR_API_KEY")
   .asString();
 ```
 ---
