@@ -11,7 +11,7 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
   - [Export to STL](#export-to-stl)
   - [Export to SRT](#export-to-srt)
   - [Export to VTT](#export-to-vtt)
-  - [Export to TXT](#export-to-txt)
+  - [Export to TEXT](#export-to-text)
   - [Export to JSON](#export-to-json)
 - [Delete a job](#delete-a-job)
 - [Get list of jobs](#get-list-of-jobs)
@@ -329,8 +329,8 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/exp
 
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
-- `maxNumberOfRows`: (optional) any integer. Sets the maximum number of rows for each subtitle.
-- `maxScreenTimePerRowSeconds`: (optional) any float. Sets the maximum number seconds given for each row of subtitles.
+- `maxNumberOfRows`: (optional) integer between 1 and 2 (default: 2). Sets the maximum number of rows for each subtitle.
+- `maxScreenTimePerRowSeconds`: (optional) any float (default: 2). Sets the maximum number seconds given for each row of subtitles.
 
 Returns (json):
 ```json
@@ -384,9 +384,9 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/exp
 
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
-- `maxCharsPerRow`: (optional) any integer. Sets the maximum number of characters per row.
-- `maxNumberOfRows`: (optional) any integer. Sets the maximum number of rows for each subtitle.
-- `maxScreenTimePerRowSeconds`: (optional) any float. Sets the maximum number seconds given for each row of subtitles.
+- `maxCharsPerRow`: (optional) integer between 30 and 45 (default: 42). Sets the maximum number of characters per row.
+- `maxNumberOfRows`: (optional) integer between 1 and 2 (default: 2). Sets the maximum number of rows for each subtitle.
+- `maxScreenTimePerRowSeconds`: (optional) any float (default: 2). Sets the maximum number seconds given for each row of subtitles.
 
 Returns (srt):
 ```
@@ -517,7 +517,7 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/exp
   .asString();
 ```
 
-### Export to TXT
+### Export to TEXT
 `GET /jobs/export-txt`
 
 Supported parameters:
@@ -525,7 +525,7 @@ Supported parameters:
 - `includeTimestamps`: (optional) any boolean value. Defaults to true.
 - `includeSpeakers`: (optional) any boolean value. Defaults to true.
 - `highlightsOnly`: (optional) any boolean value. Defaults to false.
-- `maxCharsPerRow`: (optional) any integer. Sets the maximum number of characters per row.
+- `maxCharsPerRow`: (optional) any integer. Sets the maximum number of characters per row. Defaults to no limit.
 
 Returns (txt):
 ```
@@ -774,15 +774,12 @@ HttpResponse<String> response = Unirest.delete("https://qs.amberscript.com/jobs?
 
 Supported parameters:
 - `jobId`: (optional). [`YOUR_JOB_ID`]
-- `displayFileName`: (optional). The name of the file e.g. `test.mp4`
 - `jobType`: (optional). The type of the job e.g. `perfect`
 - `language`: (optional). Language e.g. `nl`
-- `status`: (optional). The status of the job e.g. `PERFECT_OPEN`
+- `status`: (optional). It can be `OPEN`, `ERROR` or `DONE`.
 - `transcriptionType`: (optional). The type of transcription e.g. `transcription`
 - `page`: (optional). Integer value for the page to be retrieved. Defaults to `0`.
-- `pageSize`: (optional). Integer value for the number of records to be retrieved for each page. Defaults to `20`.
-- `sortDirection`: (optional). The direction in which the list should be sorted i.e. `asc` or `desc`
-- `sortProperty`: (optional). The field on which the list should be sorted e.g. `created`
+- `pageSize`: (optional). Integer value for the number of records to be retrieved for each page. Defaults to `20` and the maximum is `100`.
 
 Returns (json):
 ```json
