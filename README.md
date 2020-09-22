@@ -14,6 +14,7 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
   - [Export to TXT](#export-to-txt)
   - [Export to JSON](#export-to-json)
 - [Delete a job](#delete-a-job)
+- [Get list of jobs](#get-list-of-jobs)
 - [Additional Information](#additional-information)
 - [Support](#support)
 
@@ -760,6 +761,109 @@ print(response.text)
 ### Java
 ```java
 HttpResponse<String> response = Unirest.delete("https://qs.amberscript.com/jobs?jobId=JOB_ID&apiKey=YOUR_API_KEY")
+  .asString();
+```
+
+## Get list of jobs
+`GET /jobs`
+
+Supported parameters:
+- `jobId`: (optional) [`YOUR_JOB_ID`]
+- `displayFileName`: (optional). The name of the file e.g. `test.mp4`
+- `jobType`: (optional). The type of the job e.g. `perfect`
+- `language`: (optional). Language e.g. `nl`
+- `status`: (optional). The status of the job e.g. `PERFECT_OPEN`
+- `transcriptionType`: (optional). The type of transcription e.g. `transcription`
+- `page`: (optional). Integer value for the page to be retrieved. Defaults to `0`.
+- `pageSize`: (optional). Integer value for the number of records to be retrieved for each page. Defaults to `20`.
+- `sortDirection`: (optional). The direction in which the list should be sorted i.e. `asc` or `desc`
+- `sortProperty`: (optional). The field on which the list should be sorted e.g. `created`
+
+Returns (json):
+```json
+[
+    {
+        "jobId": "5f686d2d8c996402a02bbb92",
+        "created": 1600679213751,
+        "language": "nl",
+        "status": "DONE",
+        "nrAudioSeconds": 59,
+        "transcriptionType": "transcription",
+        "filename": "test.mp4",
+        "jobType": "perfect",
+        "jobOptions": {
+            "transcriptionStyle": "cleanread"
+        },
+        "notes": null
+    },
+    {
+        "jobId": "5f686d068c996402a02bbb85",
+        "created": 1600679174451,
+        "language": "nl",
+        "status": "DONE",
+        "nrAudioSeconds": 191,
+        "transcriptionType": "transcription",
+        "filename": "test.mp4",
+        "jobType": "perfect",
+        "jobOptions": {
+            "transcriptionStyle": "cleanread"
+        },
+        "notes": null
+    },
+    {
+        "jobId": "5f686d068c996402a02bbb82",
+        "created": 1600679174415,
+        "language": "nl",
+        "status": "DONE",
+        "nrAudioSeconds": 59,
+        "transcriptionType": "transcription",
+        "filename": "test.mp4",
+        "jobType": "perfect",
+        "jobOptions": {
+            "transcriptionStyle": "cleanread"
+        },
+        "notes": null
+    },
+]
+```
+
+### CURL
+```shell
+curl --request GET --url 'https://qs.amberscript.com/jobs?apiKey=YOUR_API_KEY'
+ ```
+
+### NodeJS
+ ```javascript
+ var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://qs.amberscript.com/jobs',
+  qs: { apiKey: 'YOUR_API_KEY' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+### Python
+```python
+import requests
+
+url = "https://qs.amberscript.com/jobs"
+
+querystring = {"apiKey":"YOUR_API_KEY"}
+
+payload = ""
+response = requests.request("GET", url, data=payload, params=querystring)
+
+print(response.text)
+```
+
+### Java
+```java
+HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs?apiKey=YOUR_API_KEY")
   .asString();
 ```
 ---
