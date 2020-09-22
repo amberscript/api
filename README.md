@@ -18,6 +18,7 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
 - [Additional Information](#additional-information)
 - [Support](#support)
 
+---
 ## Uploading a file
 `POST /jobs/upload-media`
 
@@ -96,6 +97,7 @@ print(response.status_code)
 print(response.text)
 ```
 
+---
 ## Getting the status of a transcription
 `GET /jobs/status`
 
@@ -159,6 +161,7 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/sta
   .asString();
 ```
 
+---
 ## Exporting Files
 
 ### Exporting a finished file
@@ -397,7 +400,7 @@ Goedemiddag, dank u wel.
 
 3
 00:00:05,469 --> 00:00:08,289
-Hoe gaat het met je vandaag
+Hoe gaat het met je vandaag?
 
 4
 00:00:09,159 --> 00:00:12,689
@@ -590,7 +593,7 @@ Returns (json):
 {
   "id": "5c9e45057103e464a4c6f477",
   "recordId": "RECORD_ID",
-  "filename": "FILENAMEW",
+  "filename": "FILENAME",
   "startTimeOffset": 0.0,
   "speakers": [
     {
@@ -711,8 +714,9 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/exp
   .asString();
 ```
 
+---
 ## Delete a job
-`DELETE /jobs/`
+`DELETE /jobs`
 
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
@@ -764,11 +768,12 @@ HttpResponse<String> response = Unirest.delete("https://qs.amberscript.com/jobs?
   .asString();
 ```
 
+---
 ## Get list of jobs
 `GET /jobs`
 
 Supported parameters:
-- `jobId`: (optional) [`YOUR_JOB_ID`]
+- `jobId`: (optional). [`YOUR_JOB_ID`]
 - `displayFileName`: (optional). The name of the file e.g. `test.mp4`
 - `jobType`: (optional). The type of the job e.g. `perfect`
 - `language`: (optional). Language e.g. `nl`
