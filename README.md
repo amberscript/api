@@ -173,8 +173,8 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/sta
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
 - `format`: [`xml`, `json`, `srt`]
-- `maxCharsPerSubtitle`: (optional) any integer. Determines the maximum number of characters per subtitle frame. A subtitle frame has two lines. Default: 50 (srt only)
-- `subtitleDurationMax`: (optional) any integer. Determines the max duration (in milliseconds) a single subtitle frame should be shown. Default: 4500 (srt only)
+- `maxCharsPerSubtitle`: (optional) any integer. Determines the maximum number of characters per subtitle frame. A subtitle frame has two lines. Default: `50` (srt only)
+- `subtitleDurationMax`: (optional) any integer. Determines the max duration (in milliseconds) a single subtitle frame should be shown. Default: `4500` (srt only)
 
 Returns (xml):
 ```xml
@@ -329,8 +329,8 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/exp
 
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
-- `maxNumberOfRows`: (optional) integer between 1 and 2 (default: 2). Sets the maximum number of rows for each subtitle.
-- `maxScreenTimePerRowSeconds`: (optional) any float (default: 2). Sets the maximum number seconds given for each row of subtitles.
+- `maxNumberOfRows`: (optional) integer between `1` and `2` (default: `2`). Sets the maximum number of rows for each subtitle.
+- `maxScreenTimePerRowSeconds`: (optional) any float (default: `2`). Sets the maximum number seconds given for each row of subtitles.
 
 Returns (json):
 ```json
@@ -384,9 +384,9 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/exp
 
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
-- `maxCharsPerRow`: (optional) integer between 30 and 45 (default: 42). Sets the maximum number of characters per row.
-- `maxNumberOfRows`: (optional) integer between 1 and 2 (default: 2). Sets the maximum number of rows for each subtitle.
-- `maxScreenTimePerRowSeconds`: (optional) any float (default: 2). Sets the maximum number seconds given for each row of subtitles.
+- `maxCharsPerRow`: (optional) integer between `30` and `45` (default: `42`). Sets the maximum number of characters per row.
+- `maxNumberOfRows`: (optional) integer between `1` and `2` (default: `2`). Sets the maximum number of rows for each subtitle.
+- `maxScreenTimePerRowSeconds`: (optional) any float (default: `2`). Sets the maximum number seconds given for each row of subtitles.
 
 Returns (srt):
 ```
@@ -878,7 +878,7 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs?api
 - We track the callback in our history log.
 - After **1 hour**, we make a new attempt to update the client.
 - If the attempt is unsuccessful we retry the update again.
-- The maximum number of attempts is **10**.
+- The maximum number of attempts is `10`.
 
 #### Storing the `jobId`
 You have to store the `jobId` if you don't use any callbacks.
