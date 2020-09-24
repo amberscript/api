@@ -391,20 +391,23 @@ Supported parameters:
 Returns (srt):
 ```
 1
-00:00:00,000 --> 00:00:02,190
-Goedemiddag, welkom.
+00:00:00,449 --> 00:00:03,769
+Hi, welcome to Amber script, in this short
 
 2
-00:00:02,289 --> 00:00:05,369
-Goedemiddag, dank u wel.
+00:00:03,869 --> 00:00:07,400
+video, we would like to show you how
+you can use Amber script at its full
 
 3
-00:00:05,469 --> 00:00:08,289
-Hoe gaat het met je vandaag?
+00:00:07,500 --> 00:00:10,189
+potential. The first
+function we would like to show
 
 4
-00:00:09,159 --> 00:00:12,689
-Goed, dank je!
+00:00:10,289 --> 00:00:13,639
+you is the edit function.
+This allows you to edit errors
 ```
 
 #### CURL
@@ -461,20 +464,23 @@ Returns (vtt):
 WEBVTT - created by www.amberscript.com
 
 1
-00:00:00.000 --> 00:00:02.190
-Goedemiddag, welkom.
+00:00:00.449 --> 00:00:03.769
+Hi, welcome to Amber script, in this short
 
 2
-00:00:02.289 --> 00:00:05.369
-Goedemiddag, dank u wel.
+00:00:03.869 --> 00:00:07.400
+video, we would like to show you how
+you can use Amber script at its full
 
 3
-00:00:05.469 --> 00:00:08.289
-Hoe gaat het met je vandaag?
+00:00:07.500 --> 00:00:10.189
+potential. The first
+function we would like to show
 
 4
-00:00:09.159 --> 00:00:12.689
-Goed, dank je!
+00:00:10.289 --> 00:00:13.639
+you is the edit function.
+This allows you to edit errors
 ```
 
 #### CURL
@@ -530,16 +536,7 @@ Supported parameters:
 Returns (txt):
 ```
 00:00:00
-Speaker 1: Goedemiddag, welkom.
-
-00:00:20
-Speaker 2: Goedemiddag, dank u wel.
-
-00:00:22
-Speaker 1: Hoe gaat het met je vandaag?
-
-00:00:24
-Speaker 2: Goed, dank je!
+Speaker 1: Hi, welcome to Amber script, in this short video, we would like to show you how you can use Amber script at its full potential. The first function we would like to show you is the edit function. This allows you to edit errors
 ```
 
 #### CURL
@@ -599,14 +596,6 @@ Returns (json):
     {
       "spkid": "spk1",
       "name": "Speaker 1"
-    },
-    {
-      "spkid": "spk2",
-      "name": "Speaker 2"
-    },
-    {
-      "spkid": "spk3",
-      "name": "Speaker 3"
     }
   ],
   "segments": [
@@ -614,58 +603,36 @@ Returns (json):
       "speaker": "spk1",
       "words": [
         {
-          "text": "Goedemiddag",
-          "start": 2.11,
-          "end": 2.68,
-          "duration": null,
-          "conf": null
+          "start": 0.45,
+          "end": 1.08,
+          "duration": 0.63000005,
+          "text": "Hi,",
+          "conf": 1.0,
+          "pristine": true
         },
         {
-          "text": "welkom",
-          "start": 2.68,
-          "end": 3.01,
-          "duration": null,
-          "conf": null
+          "start": 1.11,
+          "end": 1.65,
+          "duration": 0.53999996,
+          "text": "welcome",
+          "conf": 1.0,
+          "pristine": true
         },
         {
-          "text": "bij",
-          "start": 3.01,
-          "end": 3.16,
-          "duration": null,
-          "conf": null
+          "start": 1.65,
+          "end": 1.8,
+          "duration": 0.14999998,
+          "text": "to",
+          "conf": 1.0,
+          "pristine": true
         },
         {
-          "text": "het",
-          "start": 3.16,
-          "end": 3.34,
-          "duration": null,
-          "conf": null
-        },
-        {
-          "text": "mondelinge.",
-          "start": 3.37,
-          "end": 3.92,
-          "duration": null,
-          "conf": null
-        }
-      ]
-    },
-    {
-      "speaker": "spk2",
-      "words": [
-        {
-          "text": "Vragen",
-          "start": 4.14,
-          "end": 4.9,
-          "duration": null,
-          "conf": null
-        },
-        {
-          "text": "uur.",
-          "start": 4.98,
-          "end": 5.4,
-          "duration": null,
-          "conf": null
+          "start": 1.8,
+          "end": 2.1,
+          "duration": 0.29999995,
+          "text": "AmberScript",
+          "conf": 0.65,
+          "pristine": true
         }
       ]
     }
