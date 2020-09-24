@@ -775,8 +775,7 @@ HttpResponse<String> response = Unirest.delete("https://qs.amberscript.com/jobs?
 Supported parameters:
 - `jobId`: (optional). [`YOUR_JOB_ID`]
 - `jobType`: (optional). The type of the job e.g. `perfect`
-- `language`: (optional). Language e.g. `nl`
-- `status`: (optional). It can be `OPEN`, `ERROR` or `DONE`.
+- `status`: (optional). It can be `OPEN`, `BUSY`, `ERROR` or `DONE`.
 - `transcriptionType`: (optional). The type of transcription e.g. `transcription`
 - `page`: (optional). Integer value for the page to be retrieved. Defaults to `0`.
 - `pageSize`: (optional). Integer value for the number of records to be retrieved for each page. Defaults to `20` and the maximum is `100`.
