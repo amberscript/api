@@ -5,7 +5,7 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
 
 ## Table Of Contents
 - [Uploading a file](#uploading-a-file)
-  - [Callbacks](#callbacks)
+  - [How To Upload Files](#how-to-upload-files)
 - [Getting the status of a transcription](#getting-the-status-of-a-transcription)
 - [Exporting Files](#exporting-files)
   - [Exporting a finished file (DEPRECATED)](#exporting-a-finished-file)
@@ -27,19 +27,42 @@ Supported parameters:
 - `transcriptionType`: [`transcription`, `translation`]
 - `jobType`: [`perfect`, `direct`]
 - `numberOfSpeakers`: [`1`, `2`, `3`, `4`, `5`]
+- `callbackUrl`: (optional) `YOUR_CALLBACK_URL`
 
-### Callbacks
+### How To Upload Files
 
-|:warning:|`IMPORTANT`|
-|---------|:---------|
+#### **With `callbackUrl`**
+1. Make a request with the `callbackUrl` specified. We'll send the final status of your upload request to this url.
+2. When we finish processing, we'll send a `POST` request to your `callbackUrl` with the `status` of the upload.
+   - `status` can either be `DONE` or `ERROR`.
+3. Your `callbackUrl` should respond with any `2xx` if you successfully receive the `status` update.
 
-- You need to store the value of the `jobId` that is returned with a successful call to this endpoint.
-- The `jobId` value can be used in the [`GET /jobs/status`](#getting-the-status-of-a-transcription) endpoint.
+Example of `POST` request to your `callbackUrl`:
+```json
+{
+  "jobStatus": {    
+    "jobId": "{{JOB_ID}}",
+    "created": 1553871202831,
+    "language": "nl",
+    "status": "DONE",
+    "jobType": "direct",
+    "nrAudioSeconds": 0,
+    "transcriptionType": "transcription",
+    "filename": "FILE_NAME"
+  }
+}
+```
 
-#### What happens if a callback fails?
-
-- When a callback fails, we retry updating the client every hour.
+What if a callback fails?
+- When a callback fails, we retry sending the status update every hour.
 - The maximum number of retry attempts is `10`.
+
+#### **Without `callbackUrl`**
+1. Make a request without the `callbackUrl` specified.
+2. Store the value of the `jobId` that is returned with a successful call to this endpoint.
+3. Use the `jobId` to periodically check the status of the upload request (e.g. every 5 mins).
+   - You can check the status with the [`GET /jobs/status`](#getting-the-status-of-a-transcription) endpoint.
+   - `status` can either be `OPEN`, `DONE` or `ERROR`.
 
 ### File requirements:
 - max 4GB
@@ -755,7 +778,7 @@ HttpResponse<String> response = Unirest.delete("https://qs.amberscript.com/jobs?
 Supported parameters:
 - `jobId`: (optional). [`YOUR_JOB_ID`]
 - `jobType`: (optional). Type of the job e.g. `perfect`
-- `status`: (optional). `OPEN`, `BUSY`, `ERROR` or `DONE`.
+- `status`: (optional). `OPEN`, `ERROR` or `DONE`.
 - `transcriptionType`: (optional). Type of transcription e.g. `transcription`.
 - `page`: (optional) integer (default: `0`). Page to be retrieved.
 - `pageSize`: (optional) integer (default: `20`, maximum: `100`). Number of records to be retrieved for each page.
