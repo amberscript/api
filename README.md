@@ -35,14 +35,14 @@ Supported parameters:
 
 - You need to store the value of the `jobId` that is returned with a successful call to this endpoint.
 
-- The `jobId` value can be used in the [`GET /jobs/status`](getting-the-status-of-a-transcription) endpoint.
+- The `jobId` value can be used in the [`GET /jobs/status`](#getting-the-status-of-a-transcription) endpoint.
 
 #### What happens if a callback fails?
 
 - When a callback fails, we retry updating the client every hour.
 - The maximum number of retry attempts is `10`.
 
-File requirements:
+### File requirements:
 - max 4GB
 - audio or video file
 - supported formats: wav, mp3, m4a, aac, wma, mov, m4v, mp4, opus, ogg, flac
