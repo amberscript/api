@@ -5,6 +5,7 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
 
 ## Table Of Contents
 - [Uploading a file](#uploading-a-file)
+  - [Callbacks](#callbacks)
 - [Getting the status of a transcription](#getting-the-status-of-a-transcription)
 - [Exporting Files](#exporting-files)
   - [Exporting a finished file (DEPRECATED)](#exporting-a-finished-file)
@@ -15,7 +16,6 @@ Possible `status` values: "OPEN", "ERROR", "DONE".
   - [Export to JSON](#export-to-json)
 - [Delete a job](#delete-a-job)
 - [Get list of jobs](#get-list-of-jobs)
-- [Additional Information](#additional-information)
 - [Support](#support)
 
 ---
@@ -27,6 +27,24 @@ Supported parameters:
 - `transcriptionType`: [`transcription`, `translation`]
 - `jobType`: [`perfect`, `direct`]
 - `numberOfSpeakers`: [`1`, `2`, `3`, `4`, `5`]
+
+### Callbacks
+
+|:warning:|`IMPORTANT`|
+|---------|:---------|
+
+<br>
+
+> You need to store the value of the `jobId` that is returned with a successful call to this endpoint.
+
+> The `jobId` value can be used in the [`GET /jobs/status`](getting-the-status-of-a-transcription) endpoint.
+
+<br>
+
+#### What happens if a callback fails?
+
+- When a callback fails, we retry updating the client every hour.
+- The maximum number of retry attempts is `10`.
 
 File requirements:
 - max 4GB
@@ -167,14 +185,14 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/sta
 ### Exporting a finished file
 `GET /jobs/export`
 
-|:warning:|DEPRECATED|
-|---------|:---------|
+|:no_entry:|DEPRECATED|
+|----------|:---------|
 
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
 - `format`: [`xml`, `json`, `srt`]
-- `maxCharsPerSubtitle`: (optional) any integer. Determines the maximum number of characters per subtitle frame. A subtitle frame has two lines. Default: `50` (srt only)
-- `subtitleDurationMax`: (optional) any integer. Determines the max duration (in milliseconds) a single subtitle frame should be shown. Default: `4500` (srt only)
+- `maxCharsPerSubtitle`: (optional) integer (default [srt only]: `50`). Determines the maximum number of characters per subtitle frame. A subtitle frame has two lines. 
+- `subtitleDurationMax`: (optional) integer [default [srt only]: `4500`). Determines the max duration (in milliseconds) a single subtitle frame should be shown.
 
 Returns (xml):
 ```xml
@@ -330,7 +348,7 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/exp
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
 - `maxNumberOfRows`: (optional) integer between `1` and `2` (default: `2`). Sets the maximum number of rows for each subtitle.
-- `maxScreenTimePerRowSeconds`: (optional) any float (default: `2`). Sets the maximum number seconds given for each row of subtitles.
+- `maxScreenTimePerRowSeconds`: (optional) float (default: `2`). Sets the maximum number of seconds given for each row of subtitles.
 
 Returns (json):
 ```json
@@ -386,7 +404,7 @@ Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
 - `maxCharsPerRow`: (optional) integer between `30` and `45` (default: `42`). Sets the maximum number of characters per row.
 - `maxNumberOfRows`: (optional) integer between `1` and `2` (default: `2`). Sets the maximum number of rows for each subtitle.
-- `maxScreenTimePerRowSeconds`: (optional) any float (default: `2`). Sets the maximum number seconds given for each row of subtitles.
+- `maxScreenTimePerRowSeconds`: (optional) float (default: `2`). Sets the maximum number of seconds given for each row of subtitles.
 
 Returns (srt):
 ```
@@ -455,9 +473,9 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/exp
 
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
-- `maxCharsPerRow`: (optional) any integer. Sets the maximum number of characters per row.
-- `maxNumberOfRows`: (optional) any integer. Sets the maximum number of rows for each subtitle.
-- `maxScreenTimePerRowSeconds`: (optional) any float. Sets the maximum number seconds given for each row of subtitles.
+- `maxCharsPerRow`: (optional) integer between `30` and `45` (default: `42`). Sets the maximum number of characters per row.
+- `maxNumberOfRows`: (optional) integer between `1` and `2` (default: `2`). Sets the maximum number of rows for each subtitle.
+- `maxScreenTimePerRowSeconds`: (optional) float (default: `2`). Sets the maximum number of seconds given for each row of subtitles.
 
 Returns (vtt):
 ```
@@ -528,10 +546,10 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/exp
 
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
-- `includeTimestamps`: (optional) any boolean value. Defaults to true.
-- `includeSpeakers`: (optional) any boolean value. Defaults to true.
-- `highlightsOnly`: (optional) any boolean value. Defaults to false.
-- `maxCharsPerRow`: (optional) any integer. Sets the maximum number of characters per row. Defaults to no limit.
+- `includeTimestamps`: (optional) boolean (default: `true`).
+- `includeSpeakers`: (optional) boolean (default: `true`).
+- `highlightsOnly`: (optional) boolean (default: `false`).
+- `maxCharsPerRow`: (optional) integer (default: `no default`). Sets the maximum number of characters per row.
 
 Returns (txt):
 ```
@@ -741,11 +759,11 @@ HttpResponse<String> response = Unirest.delete("https://qs.amberscript.com/jobs?
 
 Supported parameters:
 - `jobId`: (optional). [`YOUR_JOB_ID`]
-- `jobType`: (optional). The type of the job e.g. `perfect`
-- `status`: (optional). It can be `OPEN`, `BUSY`, `ERROR` or `DONE`.
-- `transcriptionType`: (optional). The type of transcription e.g. `transcription`
-- `page`: (optional). Integer value for the page to be retrieved. Defaults to `0`.
-- `pageSize`: (optional). Integer value for the number of records to be retrieved for each page. Defaults to `20` and the maximum is `100`.
+- `jobType`: (optional). Type of the job e.g. `perfect`
+- `status`: (optional). `OPEN`, `BUSY`, `ERROR` or `DONE`.
+- `transcriptionType`: (optional). Type of transcription e.g. `transcription`.
+- `page`: (optional) integer (default: `0`). Page to be retrieved.
+- `pageSize`: (optional) integer (default: `20`, maximum: `100`). Number of records to be retrieved for each page.
 
 Returns (json):
 ```json
@@ -835,19 +853,6 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs?api
   .asString();
 ```
 ---
-## Additional Information
-
-### Callbacks
-
-#### What happens if a callback fails?
-
-- We track the callback in our history log.
-- After **1 hour**, we make a new attempt to update the client.
-- If the attempt is unsuccessful we retry the update again.
-- The maximum number of attempts is `10`.
-
-#### Storing the `jobId`
-You have to store the `jobId` if you don't use any callbacks.
 
 ## Support
 If you need any technical assistance, feel free to contact `info (at) amberscript (dot) com`
