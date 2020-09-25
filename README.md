@@ -34,7 +34,6 @@ Supported parameters:
 |---------|:---------|
 
 - You need to store the value of the `jobId` that is returned with a successful call to this endpoint.
-
 - The `jobId` value can be used in the [`GET /jobs/status`](#getting-the-status-of-a-transcription) endpoint.
 
 #### What happens if a callback fails?
@@ -187,8 +186,8 @@ HttpResponse<String> response = Unirest.get("https://qs.amberscript.com/jobs/sta
 Supported parameters:
 - `jobId`: [`YOUR_JOB_ID`]
 - `format`: [`xml`, `json`, `srt`]
-- `maxCharsPerSubtitle`: (optional) integer (default [srt only]: `50`). Determines the maximum number of characters per subtitle frame. A subtitle frame has two lines. 
-- `subtitleDurationMax`: (optional) integer [default [srt only]: `4500`). Determines the max duration (in milliseconds) a single subtitle frame should be shown.
+- `maxCharsPerSubtitle`: (optional) integer (default: `50`). Determines the maximum number of characters per subtitle frame. A subtitle frame has two lines. (srt only)
+- `subtitleDurationMax`: (optional) integer [default: `4500`). Determines the max duration (in milliseconds) a single subtitle frame should be shown. (srt only)
 
 Returns (xml):
 ```xml
