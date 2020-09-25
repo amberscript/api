@@ -33,13 +33,9 @@ Supported parameters:
 |:warning:|`IMPORTANT`|
 |---------|:---------|
 
-<br>
-
 - You need to store the value of the `jobId` that is returned with a successful call to this endpoint.
 
 - The `jobId` value can be used in the [`GET /jobs/status`](getting-the-status-of-a-transcription) endpoint.
-
-<br>
 
 #### What happens if a callback fails?
 
