@@ -1,4 +1,7 @@
 # AmberScript Transcription API
+
+> We've revamped our API documentation and you can find the new version [here](https://amberscript.github.io/api-docs/#introduction)
+
 You will receive an apiKey from us, which you will have to provide as query parameter `apiKey` for all endpoints below. After uploading the file using endpoint 1), our transcribers or our automatic speech recognition servers (depending on the jobType) will get to work and create a transcription. `direct` transcriptions are usually ready within 1h, `perfect` ones within 5 business days. You can query the `status` of the job using endpoint 2). When `status` changed to `DONE` the job is finished and you can download the file in json or xml format using endpoint 3).
 
 Possible `status` values: "OPEN", "ERROR", "DONE".
@@ -522,10 +525,10 @@ This allows you to edit errors
 #### CURL
 ```shell
 curl --request GET --url 'https://qs.amberscript.com/jobs/export-vtt?jobId=JOB_ID&apiKey=YOUR_API_KEY'
- ```
+```
 
  #### NodeJS
- ```javascript
+```javascript
  var request = require("request");
 
 var options = { method: 'GET',
@@ -680,7 +683,7 @@ Returns (json):
 #### CURL
 ```shell
 curl --request GET --url 'https://qs.amberscript.com/jobs/export-json?jobId=JOB_ID&apiKey=YOUR_API_KEY'
- ```
+```
 
  #### NodeJS
  ```javascript
@@ -737,7 +740,7 @@ curl --request DELETE --url 'https://qs.amberscript.com/jobs?jobId=JOB_ID&apiKey
  ```
 
 ### NodeJS
- ```javascript
+```javascript
  var request = require("request");
 
 var options = { method: 'DELETE',
@@ -837,7 +840,7 @@ curl --request GET --url 'https://qs.amberscript.com/jobs?apiKey=YOUR_API_KEY'
  ```
 
 ### NodeJS
- ```javascript
+```javascript
  var request = require("request");
 
 var options = { method: 'GET',
